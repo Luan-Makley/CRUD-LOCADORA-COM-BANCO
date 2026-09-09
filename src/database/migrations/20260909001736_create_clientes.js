@@ -3,14 +3,16 @@
  * @returns { Promise<void> }
  */
 exports.up = function(knex) {
-    return knex.schema.createTable("generos", (table) => {
+     return knex.schema.createTable("cliente", (table) => {
         table.increments("id").primary()
         table.string("nome").notNullable()
+         table.string("email").unique().notNullable()
         table.timestamp(true,true)
-    })
+     })
+    };
 
-};
-
+     
+     
 
 
 /**
@@ -18,6 +20,6 @@ exports.up = function(knex) {
  * @returns { Promise<void> }
  */
 exports.down = function(knex) {
-    return knex.schema.dropTable("generos")
+    return knex.schema.dropTable("clientes")
   
 };
